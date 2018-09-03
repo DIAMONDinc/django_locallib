@@ -27,6 +27,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', '-9d#m4b=r%ftvvq@%f81q&0od_!+m$
 # DEBUG = True
 DEBUG = bool(os.environ.get('DJANGO_DEBUG', True))
 
+# примерно такой сайт locallib.....
 ALLOWED_HOSTS = []
 
 
