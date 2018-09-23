@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
+import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -27,7 +28,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', '-9d#m4b=r%ftvvq@%f81q&0od_!+m$
 # DEBUG = True
 DEBUG = bool(os.environ.get('DJANGO_DEBUG', True))
 
-# примерно такой сайт locallib.....
+# сюда впишем мой адрес сайта
 ALLOWED_HOSTS = []
 
 
@@ -45,6 +46,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',  # Управление сессиями между запросами
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -125,7 +127,10 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
+# The absolute path to the directory where collectstatic will collect static files for deployment.
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
+# The URL to use when referring to static files (where they will be served from)
 STATIC_URL = '/static/'
 
 # изменить поведение сессий таким образом, чтобы они записывали любое свое изменение в базу данных и отправляли куки,
@@ -136,6 +141,14 @@ SESSION_SAVE_EVERY_REQUEST = True
 LOGIN_REDIRECT_URL = '/'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# Heroku: Update database configuration from $DATABASE_URL.
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
+
+# Simplified static file serving.
+# https://warehouse.python.org/project/whitenoise/
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
 
