@@ -151,5 +151,9 @@ DATABASES['default'].update(db_from_env)
 # https://warehouse.python.org/project/whitenoise/
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+# С этим вы получите лучший отчет, когда возникнет ошибка, которую вы можете использовать для отладки ошибки.
+ADMINS = (('awesome-django.heroku', 'hp567@rambler.ru'),)
+
+
 
 
