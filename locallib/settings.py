@@ -30,7 +30,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', '-9d#m4b=r%ftvvq@%f81q&0od_!+m$
 DEBUG = bool(os.environ.get('DJANGO_DEBUG', True))
 
 # сюда впишем мой адрес сайта
-ALLOWED_HOSTS = ['awesome-django.herokuapp.com']
+ALLOWED_HOSTS = ['awesome-django.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
