@@ -152,7 +152,7 @@ DATABASES['default'].update(db_from_env)
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # когда возникнет ошибка, которую вы можете использовать для отладки ошибки.
-ADMINS = (('awesome-django.heroku', 'hp567@rambler.ru'),)
+ADMINS = (('awesome-django.herokuapp.com', 'hp567@rambler.ru'),)
 
 
 
